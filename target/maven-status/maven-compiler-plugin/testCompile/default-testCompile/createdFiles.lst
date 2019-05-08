@@ -1,0 +1,7 @@
+com\warehouse\WarehouseApplicationTest.class
+com\warehouse\controller\ProductControllerTest.class
+com\warehouse\controller\InventoryControllerTest.class
+com\warehouse\service\InventoryServiceTest.class
+com\warehouse\service\ProductServiceTest.class
+com\warehouse\service\WarehouseServiceTest.class
+com\warehouse\controller\WarehouseControllerTest.class
