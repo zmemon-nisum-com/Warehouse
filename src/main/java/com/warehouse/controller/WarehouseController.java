@@ -1,6 +1,5 @@
 package com.warehouse.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.warehouse.Dto.WarehouseDto;
+import com.warehouse.exception.WarehouseException;
 import com.warehouse.model.Warehouse;
 import com.warehouse.service.WarehouseService;
 
@@ -25,35 +25,35 @@ public class WarehouseController {
 	private WarehouseService warehouseService;
 	
 	@GetMapping("/")
-	public List<WarehouseDto> getAllWarehouse() throws IOException {
+	public List<WarehouseDto> getAllWarehouse() throws WarehouseException {
 		List<WarehouseDto> warehouseDtoList = warehouseService.getAllWarehouse();
 		
 		return warehouseDtoList;
 	}
 	
 	@GetMapping("/{wareHouseId}")
-	public WarehouseDto getWarehouse(@PathVariable Integer wareHouseId) throws IOException {
+	public WarehouseDto getWarehouse(@PathVariable Integer wareHouseId) throws WarehouseException {
 		WarehouseDto warehouseDto = warehouseService.getWarehouse(wareHouseId);
 		
 		return warehouseDto;
 	}
 	
 	@DeleteMapping("/{wareHouseId}")
-	public String deleteWarehouse(@PathVariable Integer wareHouseId) throws IOException {
+	public String deleteWarehouse(@PathVariable Integer wareHouseId) throws WarehouseException {
 		warehouseService.deleteWarehouse(wareHouseId);
 		
 		return "Deleted";
 	}
 	
 	@PostMapping("/")
-	public Warehouse saveWarehouse(@RequestBody WarehouseDto warehouseDto) throws IOException {
+	public Warehouse saveWarehouse(@RequestBody WarehouseDto warehouseDto) throws WarehouseException {
 		Warehouse savedWarehouse = warehouseService.saveWarehouse(warehouseDto);
 
 		return savedWarehouse;
 	}
 	
 	@PutMapping("/")
-	public Warehouse updateWarehouse(@RequestBody WarehouseDto warehouseDto) throws IOException {
+	public Warehouse updateWarehouse(@RequestBody WarehouseDto warehouseDto) throws WarehouseException {
 		Warehouse updatedWarehouse = warehouseService.updateWarehouse(warehouseDto);
 		
 		return updatedWarehouse;

@@ -1,6 +1,5 @@
 package com.warehouse.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.warehouse.Dto.ProductDto;
+import com.warehouse.exception.WarehouseException;
 import com.warehouse.model.Product;
 import com.warehouse.service.ProductService;
 
@@ -25,35 +25,35 @@ public class ProductController {
 	private ProductService productService;
 	
 	@GetMapping("/")
-	public List<ProductDto> getAllProduct() throws IOException {
+	public List<ProductDto> getAllProduct() throws WarehouseException {
 		List<ProductDto> productDtoList = productService.getAllProduct();
 		
 		return productDtoList;
 	}
 	
 	@GetMapping("/{productId}")
-	public ProductDto getProduct(@PathVariable Integer productId) throws IOException {
+	public ProductDto getProduct(@PathVariable Integer productId) throws WarehouseException {
 		ProductDto productDto = productService.getProduct(productId);
 		
 		return productDto;
 	}
 	
 	@DeleteMapping("/{productId}")
-	public String deleteProduct(@PathVariable Integer productId) throws IOException {
+	public String deleteProduct(@PathVariable Integer productId) throws WarehouseException {
 		productService.deleteProduct(productId);
 
 		return "Product Deleted";
 	}
 	
 	@PostMapping("/")
-	public Product saveProduct(@RequestBody ProductDto productDto) throws IOException {
+	public Product saveProduct(@RequestBody ProductDto productDto) throws WarehouseException {
 		Product savedProduct = productService.saveProduct(productDto, productDto.getAttributeId(), productDto.getProductAttributeId());
 		
 		return savedProduct;
 	}
 	
 	@PutMapping("/")
-	public Product updateProduct(@RequestBody ProductDto productDto) throws IOException {
+	public Product updateProduct(@RequestBody ProductDto productDto) throws WarehouseException {
 		Product updatedProduct = productService.updateProduct(productDto, productDto.getAttributeId(), productDto.getProductAttributeId());
 		
 		return updatedProduct;

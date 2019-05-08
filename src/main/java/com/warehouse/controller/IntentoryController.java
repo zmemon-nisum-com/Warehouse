@@ -1,7 +1,6 @@
 package com.warehouse.controller;
 
 
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.warehouse.Dto.InventoryDto;
 import com.warehouse.Dto.ProductDto;
+import com.warehouse.exception.WarehouseException;
 import com.warehouse.model.Inventory;
 import com.warehouse.service.InventoryService;
 
@@ -28,63 +28,63 @@ public class IntentoryController {
 	
 	
 	@GetMapping("/")
-	public List<InventoryDto> getAllInventory() throws IOException {
+	public List<InventoryDto> getAllInventory() throws WarehouseException {
 		List<InventoryDto> inventoryList = inventoryService.getAllInventory();
 		
 		return inventoryList;
 	}
 	
 	@GetMapping("/{inventoryId}")
-	public InventoryDto getInventory(@PathVariable Integer inventoryId) throws IOException {
+	public InventoryDto getInventory(@PathVariable Integer inventoryId) throws WarehouseException {
 		InventoryDto inventoryDto = inventoryService.getInventory(inventoryId);
 
 		return inventoryDto;
 	}
 	
 	@GetMapping("/productAttribute/{productAttributeId}")
-	public List<InventoryDto> getInventoryByProductAttribute(@PathVariable Integer productAttributeId) throws IOException {
+	public List<InventoryDto> getInventoryByProductAttribute(@PathVariable Integer productAttributeId) throws WarehouseException {
 		List<InventoryDto> inventoryDtoList = inventoryService.getAllInventoryByProductAttribute(productAttributeId);
 		
 		return inventoryDtoList;
 	}
 	
 	@GetMapping("/warehouse/{warehouseId}")
-	public List<InventoryDto> getInventoryByWarehouse(@PathVariable Integer warehouseId) throws IOException {
+	public List<InventoryDto> getInventoryByWarehouse(@PathVariable Integer warehouseId) throws WarehouseException {
 		List<InventoryDto> inventoryDtoList = inventoryService.getAllInventoryByWarehouse(warehouseId);
 		
 		return inventoryDtoList;
 	}
 	
 	@GetMapping("/product/{productId}")
-	public ProductDto getAllInventoryByProduct(@PathVariable Integer productId) throws IOException {
+	public ProductDto getAllInventoryByProduct(@PathVariable Integer productId) throws WarehouseException {
 		ProductDto productDto = inventoryService.getAllInventoryByProduct(productId);
 		
 		return productDto;
 	}
 	
 	@DeleteMapping("/{inventoryId}")
-	public String deleteInventory(@PathVariable Integer inventoryId) throws IOException {
+	public String deleteInventory(@PathVariable Integer inventoryId) throws WarehouseException {
 		inventoryService.deleteInventory(inventoryId);
 		
 		return "Inventory Deleted";
 	}
 	
 	@PostMapping("/{warehouseId}")
-	public Inventory saveInventory(@RequestBody InventoryDto inventoryDto, @PathVariable Integer warehouseId) throws IOException {
+	public Inventory saveInventory(@RequestBody InventoryDto inventoryDto, @PathVariable Integer warehouseId) throws WarehouseException {
 		Inventory savedInventory = inventoryService.saveInventory(inventoryDto, warehouseId);
 		
 		return savedInventory;
 	}
 	
 	@PostMapping("/")
-	public List<Inventory> saveInventoryToWarehouses(@RequestBody InventoryDto inventoryDto) throws IOException {
+	public List<Inventory> saveInventoryToWarehouses(@RequestBody InventoryDto inventoryDto) throws WarehouseException {
 		List<Inventory> inventoryList = inventoryService.saveInventoryList(inventoryDto);
 		
 		return inventoryList;
 	}
 	
 	@PutMapping("/")
-	public Inventory uodateInventory(@RequestBody InventoryDto inventoryDto) throws IOException {
+	public Inventory uodateInventory(@RequestBody InventoryDto inventoryDto) throws WarehouseException {
 		Inventory updatedInventory = inventoryService.updateInventory(inventoryDto);
 		
 		return updatedInventory;
