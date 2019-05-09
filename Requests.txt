@@ -1,0 +1,124 @@
+Warehouse
+
+-> Get All (/warehouse/)
+
+-> Get By Id (/warehouse/1)
+
+-> Delete (/warehouse/1)
+
+-> Post (/warehouse/)
+   Body
+
+   {  
+     "address": "UK",
+     "warehouseName": "Mega warehouse",
+     "country": {
+        "id" : 2
+     }
+   }
+
+
+-> Put (/warehouse/)
+   Body
+
+   {  
+     "id":1
+     "address": "UK",
+     "warehouseName": "Small warehouse",
+     "country": {
+        "id" : 2
+     }
+   }
+
+
+Product
+
+-> Get All (/product/)
+
+-> Get By Id (/product/1)
+
+-> Delete (/product/1)
+
+-> Post (/product/)
+   Body
+{
+  "createdAt": null,
+  "moq": 1,
+  "price": "222",
+  "productDescription": "abcd",
+  "productName": "pro22222222",
+  "qpb": 1,
+  "reorderPoint": 1,
+  "updatedAt": null,
+  "brandId": 2,
+  "productTypeId": 2,
+  "attributeId": 2
+}
+
+-> Put (/product/)
+   Body
+
+{
+  "id":3,
+  "createdAt": null,
+  "moq": 1,
+  "price": "222",
+  "productDescription": "abcd",
+  "productName": "pro22222222",
+  "qpb": 1,
+  "reorderPoint": 1,
+  "updatedAt": null,
+  "brandId": 2,
+  "productTypeId": 2,
+  "attributeId": 2
+} 
+   
+
+
+Inventory
+
+-> Get All (/inventory/)
+
+-> Get By Id (/inventory/{id})
+
+-> Get By Attribute Id (/productAttribute/{productAttributeId}
+
+-> Get By Warehouse Id (/warehouse/{warehouse Id}
+
+-> Delete (/inventory/{id})
+
+-> Post (/inventory/{warehouseId})
+   Body
+
+   {
+     "availableQuantity": 2,
+     "inStock": 2,
+     "inTransit": 2,
+     "productAttributeId": 1
+     "warehouseId":1 
+   }
+
+
+
+-> Post for all warehouse (/inventory/)
+   Body
+
+   {
+     "availableQuantity": 2,
+     "inStock": 2,
+     "inTransit": 2,
+     "productAttributeId": 1
+   }
+
+
+-> Put (/inventory/)
+   Body
+
+   {
+     "id":1 
+     "availableQuantity": 2,
+     "inStock": 2,
+     "inTransit": 2,
+     "productAttributeId": 1
+     "warehouseId":1 
+   }
