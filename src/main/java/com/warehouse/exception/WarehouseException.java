@@ -11,6 +11,6 @@ public class WarehouseException extends Exception {
 	}
 
 	public String toString() {
-		return "WarehouseException[" + resonse + "]";
+		return "WarehouseException[Error while processing your request]";
 	}
 }
