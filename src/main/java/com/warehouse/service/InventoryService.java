@@ -13,7 +13,7 @@ public interface InventoryService {
 	public Inventory saveInventory(InventoryDto inventory, Integer warehouseId);
 	public Inventory updateInventory(InventoryDto inventory);
 	public String deleteInventory(Integer inventoryId);
-	public List<Inventory> getAllInventoryByWarehouseProduct(Integer warehouseId, Integer productId);
+	public List<InventoryDto> getAllInventoryByWarehouseProduct(Integer warehouseId, Integer productId);
 	public List<Inventory> saveInventoryList(InventoryDto inventory);
-	public List<Inventory> getAllInventoryByProduct(Integer productId);
+	public List<InventoryDto> getAllInventoryByProduct(Integer productId);
 }

@@ -55,15 +55,15 @@ public class IntentoryController {
 	}
 	
 	@GetMapping("/warehouse/{warehouseId}/product/{productId}")
-	public List<Inventory> getAllInventoryByProductAndWarehouse(@PathVariable Integer warehouseId, @PathVariable Integer productId) throws WarehouseException {
-		List<Inventory> inventoryList = inventoryService.getAllInventoryByWarehouseProduct(warehouseId, productId);
+	public List<InventoryDto> getAllInventoryByProductAndWarehouse(@PathVariable Integer warehouseId, @PathVariable Integer productId) throws WarehouseException {
+		List<InventoryDto> inventoryList = inventoryService.getAllInventoryByWarehouseProduct(warehouseId, productId);
 		
 		return inventoryList;
 	}
 	
 	@GetMapping("/product/{productId}")
-	public List<Inventory> getAllInventoryByProduct(@PathVariable Integer productId) throws WarehouseException {
-		List<Inventory> inventoryList = inventoryService.getAllInventoryByProduct(productId);
+	public List<InventoryDto> getAllInventoryByProduct(@PathVariable Integer productId) throws WarehouseException {
+		List<InventoryDto> inventoryList = inventoryService.getAllInventoryByProduct(productId);
 		
 		return inventoryList;
 	}

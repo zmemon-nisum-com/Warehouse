@@ -90,17 +90,27 @@ public class InventoryServiceImpl implements InventoryService {
 	}
 
 	@Override
-	public List<Inventory> getAllInventoryByWarehouseProduct(Integer warehouseId, Integer productId) {
+	public List<InventoryDto> getAllInventoryByWarehouseProduct(Integer warehouseId, Integer productId) {
 		List<Inventory> inventoryList = inventoryRepository.getAllInventoryByProductIdAndWarehouseId(productId, warehouseId);
+		List<InventoryDto> inventoryDtoList = new ArrayList<InventoryDto>();
+		for(Inventory inventory:inventoryList)
+		{
+			inventoryDtoList.add(inventoryUtil.convertInventoryToInventoryDto(inventory));
+		}
 		
-		return inventoryList;
+		return inventoryDtoList;
 	}
 
 	@Override
-	public List<Inventory> getAllInventoryByProduct(Integer productId) {
+	public List<InventoryDto> getAllInventoryByProduct(Integer productId) {
 		List<Inventory> inventoryList = inventoryRepository.getAllInventoryByProductId(productId);
+		List<InventoryDto> inventoryDtoList = new ArrayList<InventoryDto>();
+		for(Inventory inventory:inventoryList)
+		{
+			inventoryDtoList.add(inventoryUtil.convertInventoryToInventoryDto(inventory));
+		}
 		
-		return inventoryList;
+		return inventoryDtoList;
 	}
 	
 	@Override
