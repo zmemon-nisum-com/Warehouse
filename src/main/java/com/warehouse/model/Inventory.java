@@ -3,8 +3,6 @@ package com.warehouse.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 
 /**
  * The persistent class for the inventory database table.

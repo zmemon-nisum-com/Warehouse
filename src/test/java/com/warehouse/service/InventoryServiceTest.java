@@ -72,7 +72,7 @@ public class InventoryServiceTest {
 		InventoryDto inventoryDto = getInventoryDto();
 		
 		when(inventoryRepository.findById(Mockito.anyInt())).thenReturn(Optional.of(inventory));
-		when(inventoryUtil.ConvertInventoryToInventoryDtoo(Mockito.any())).thenReturn(inventoryDto);
+		when(inventoryUtil.convertInventoryToInventoryDtoo(Mockito.any())).thenReturn(inventoryDto);
 		Assert.assertNotNull(inventoryService.getInventory(1));
 	}
 	

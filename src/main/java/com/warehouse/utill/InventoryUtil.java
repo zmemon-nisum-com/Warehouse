@@ -14,7 +14,7 @@ import com.warehouse.model.Warehouse;
 @Component
 public class InventoryUtil {
 	
-	public Inventory ConvertInventoryDtoToInventory(InventoryDto inventoryDto)
+	public Inventory convertInventoryDtoToInventory(InventoryDto inventoryDto)
 	{
 		Inventory inventory = new Inventory();
 		inventory.setId(inventoryDto.getId());
@@ -43,7 +43,7 @@ public class InventoryUtil {
 	}
 	
 	
-	public InventoryDto ConvertInventoryToInventoryDto(Inventory inventory)
+	public InventoryDto convertInventoryToInventoryDto(Inventory inventory)
 	{
 		InventoryDto InventoryDto = new InventoryDto();
 		InventoryDto.setId(inventory.getId());
@@ -60,7 +60,7 @@ public class InventoryUtil {
 		return InventoryDto;
 	}
 	
-	public InventoryDto ConvertInventoryToInventoryDtoo(Optional<Inventory> inventory)
+	public InventoryDto convertInventoryToInventoryDtoo(Optional<Inventory> inventory)
 	{
 		InventoryDto InventoryDto = new InventoryDto();
 		InventoryDto.setId(inventory.get().getId());

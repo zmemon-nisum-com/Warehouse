@@ -32,7 +32,7 @@ public class InventoryServiceImpl implements InventoryService {
 		List<InventoryDto> inventoryDtoList = new ArrayList<InventoryDto>();
 		for(Inventory inventory:inventoryList)
 		{
-			inventoryDtoList.add(inventoryUtil.ConvertInventoryToInventoryDto(inventory));
+			inventoryDtoList.add(inventoryUtil.convertInventoryToInventoryDto(inventory));
 		}
 		
 		return inventoryDtoList;
@@ -41,7 +41,7 @@ public class InventoryServiceImpl implements InventoryService {
 	@Override
 	public InventoryDto getInventory(Integer inventoryId) {
 		Optional<Inventory> inventory = inventoryRepository.findById(inventoryId);
-		InventoryDto inventoryDto = inventoryUtil.ConvertInventoryToInventoryDtoo(inventory);
+		InventoryDto inventoryDto = inventoryUtil.convertInventoryToInventoryDtoo(inventory);
 
 		return inventoryDto;
 	}
@@ -52,7 +52,7 @@ public class InventoryServiceImpl implements InventoryService {
 		List<InventoryDto> inventoryDtoList = new ArrayList<InventoryDto>();
 		for(Inventory inventory:inventoryList)
 		{
-			inventoryDtoList.add(inventoryUtil.ConvertInventoryToInventoryDto(inventory));
+			inventoryDtoList.add(inventoryUtil.convertInventoryToInventoryDto(inventory));
 		}
 		
 		return inventoryDtoList;
@@ -64,7 +64,7 @@ public class InventoryServiceImpl implements InventoryService {
 		List<InventoryDto> inventoryDtoList = new ArrayList<InventoryDto>();
 		for(Inventory inventory:inventoryList)
 		{
-			inventoryDtoList.add(inventoryUtil.ConvertInventoryToInventoryDto(inventory));
+			inventoryDtoList.add(inventoryUtil.convertInventoryToInventoryDto(inventory));
 		}
 		
 		return inventoryDtoList;
@@ -73,13 +73,13 @@ public class InventoryServiceImpl implements InventoryService {
 	@Override
 	public Inventory saveInventory(InventoryDto inventoryDto, Integer warehouseId) {
 		inventoryDto.setWarehouseId(warehouseId);
-		Inventory inventory = inventoryUtil.ConvertInventoryDtoToInventory(inventoryDto);
+		Inventory inventory = inventoryUtil.convertInventoryDtoToInventory(inventoryDto);
 		return inventoryRepository.save(inventory);
 	}
 
 	@Override
 	public Inventory updateInventory(InventoryDto inventoryDto) {
-		Inventory inventory = inventoryUtil.ConvertInventoryDtoToInventory(inventoryDto);
+		Inventory inventory = inventoryUtil.convertInventoryDtoToInventory(inventoryDto);
 		return inventoryRepository.save(inventory);
 	}
 
@@ -105,7 +105,7 @@ public class InventoryServiceImpl implements InventoryService {
 	
 	@Override
 	public List<Inventory> saveInventoryList(InventoryDto inventoryDto) {
-		Inventory inventory = inventoryUtil.ConvertInventoryDtoToInventory(inventoryDto);
+		Inventory inventory = inventoryUtil.convertInventoryDtoToInventory(inventoryDto);
 		List<Warehouse> warehousesList = warehouseRepository.findAll();
 		List<Inventory> inventoryList = new ArrayList<Inventory>();
 		for(Warehouse warehouse:warehousesList)
