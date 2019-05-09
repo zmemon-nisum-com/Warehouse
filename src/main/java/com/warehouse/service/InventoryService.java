@@ -3,7 +3,6 @@ package com.warehouse.service;
 import java.util.List;
 
 import com.warehouse.Dto.InventoryDto;
-import com.warehouse.Dto.ProductDto;
 import com.warehouse.model.Inventory;
 
 public interface InventoryService {
@@ -14,7 +13,7 @@ public interface InventoryService {
 	public Inventory saveInventory(InventoryDto inventory, Integer warehouseId);
 	public Inventory updateInventory(InventoryDto inventory);
 	public String deleteInventory(Integer inventoryId);
-	public ProductDto getAllInventoryByProduct(Integer productId);
+	public List<Inventory> getAllInventoryByWarehouseProduct(Integer warehouseId, Integer productId);
 	public List<Inventory> saveInventoryList(InventoryDto inventory);
-
+	public List<Inventory> getAllInventoryByProduct(Integer productId);
 }

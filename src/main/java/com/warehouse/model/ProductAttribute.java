@@ -38,7 +38,7 @@ public class ProductAttribute implements Serializable {
 
 	//bi-directional many-to-one association to Product
 	@JsonIgnore
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Product product;
 
     public ProductAttribute() {

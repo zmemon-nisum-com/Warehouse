@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.warehouse.Dto.InventoryDto;
-import com.warehouse.Dto.ProductDto;
 import com.warehouse.exception.WarehouseException;
 import com.warehouse.model.Inventory;
 import com.warehouse.service.InventoryService;
@@ -55,11 +54,18 @@ public class IntentoryController {
 		return inventoryDtoList;
 	}
 	
-	@GetMapping("/product/{productId}")
-	public ProductDto getAllInventoryByProduct(@PathVariable Integer productId) throws WarehouseException {
-		ProductDto productDto = inventoryService.getAllInventoryByProduct(productId);
+	@GetMapping("/warehouse/{warehouseId}/product/{productId}")
+	public List<Inventory> getAllInventoryByProductAndWarehouse(@PathVariable Integer warehouseId, @PathVariable Integer productId) throws WarehouseException {
+		List<Inventory> inventoryList = inventoryService.getAllInventoryByWarehouseProduct(warehouseId, productId);
 		
-		return productDto;
+		return inventoryList;
+	}
+	
+	@GetMapping("/product/{productId}")
+	public List<Inventory> getAllInventoryByProduct(@PathVariable Integer productId) throws WarehouseException {
+		List<Inventory> inventoryList = inventoryService.getAllInventoryByProduct(productId);
+		
+		return inventoryList;
 	}
 	
 	@DeleteMapping("/{inventoryId}")

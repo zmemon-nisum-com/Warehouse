@@ -27,6 +27,7 @@ com\warehouse\config\WebMvcConfig.class
 com\warehouse\controller\ProductController.class
 com\warehouse\model\Attribute.class
 com\warehouse\utill\ProductUtil.class
+com\warehouse\exception\WarehouseException.class
 com\warehouse\controller\IntentoryController.class
 com\warehouse\model\ProductType.class
 com\warehouse\repository\WarehouseRepository.class

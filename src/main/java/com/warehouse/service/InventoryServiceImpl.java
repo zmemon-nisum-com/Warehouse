@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.warehouse.Dto.InventoryDto;
-import com.warehouse.Dto.ProductDto;
 import com.warehouse.model.Inventory;
 import com.warehouse.model.Warehouse;
 import com.warehouse.repository.InventoryRepository;
@@ -23,9 +22,6 @@ public class InventoryServiceImpl implements InventoryService {
 	
 	@Autowired
 	private WarehouseRepository warehouseRepository;
-	
-	@Autowired 
-	private ProductService productService;
 	
 	@Autowired 
 	private InventoryUtil inventoryUtil;
@@ -94,12 +90,19 @@ public class InventoryServiceImpl implements InventoryService {
 	}
 
 	@Override
-	public ProductDto getAllInventoryByProduct(Integer productId) {
-		ProductDto productDto = productService.getProduct(productId);
+	public List<Inventory> getAllInventoryByWarehouseProduct(Integer warehouseId, Integer productId) {
+		List<Inventory> inventoryList = inventoryRepository.getAllInventoryByProductIdAndWarehouseId(productId, warehouseId);
 		
-		return productDto;
+		return inventoryList;
 	}
 
+	@Override
+	public List<Inventory> getAllInventoryByProduct(Integer productId) {
+		List<Inventory> inventoryList = inventoryRepository.getAllInventoryByProductId(productId);
+		
+		return inventoryList;
+	}
+	
 	@Override
 	public List<Inventory> saveInventoryList(InventoryDto inventoryDto) {
 		Inventory inventory = inventoryUtil.ConvertInventoryDtoToInventory(inventoryDto);

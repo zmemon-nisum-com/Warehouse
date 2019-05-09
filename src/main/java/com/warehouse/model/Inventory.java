@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+
 /**
  * The persistent class for the inventory database table.
  * 
@@ -33,8 +34,7 @@ public class Inventory implements Serializable {
 	private String updatedAt;
 
 	//bi-directional many-to-one association to ProductAttribute
-	@JsonIgnore
-	@ManyToOne
+	@ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="product_attribute_id")
 	private ProductAttribute productAttribute;
 

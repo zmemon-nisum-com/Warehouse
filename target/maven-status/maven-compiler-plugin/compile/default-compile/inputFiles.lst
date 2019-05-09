@@ -26,6 +26,7 @@ D:\Workspace\warehouse\src\main\java\com\warehouse\controller\ProductController.
 D:\Workspace\warehouse\src\main\java\com\warehouse\repository\ProductRepository.java
 D:\Workspace\warehouse\src\main\java\com\warehouse\Dto\InventoryDto.java
 D:\Workspace\warehouse\src\main\java\com\warehouse\repository\WarehouseRepository.java
+D:\Workspace\warehouse\src\main\java\com\warehouse\exception\WarehouseException.java
 D:\Workspace\warehouse\src\main\java\com\warehouse\controller\WarehouseController.java
 D:\Workspace\warehouse\src\main\java\com\warehouse\Dto\ProductAttributesDto.java
 D:\Workspace\warehouse\src\main\java\com\warehouse\repository\ProductAttributeReposiroty.java
