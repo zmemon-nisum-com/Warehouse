@@ -43,9 +43,6 @@ public class InventoryServiceTest {
 	private WarehouseRepository warehouseRepository;
 	
 	@Mock 
-	private ProductService productService;
-	
-	@Mock 
 	private InventoryUtil inventoryUtil;
 	
 	@Before
@@ -55,7 +52,6 @@ public class InventoryServiceTest {
         ReflectionTestUtils.setField(inventoryService,"inventoryRepository", inventoryRepository);
 		ReflectionTestUtils.setField(inventoryService,"inventoryUtil", inventoryUtil);
         ReflectionTestUtils.setField(inventoryService,"warehouseRepository", warehouseRepository);
-        ReflectionTestUtils.setField(inventoryService,"productService", productService);
 	}
 	
 	@Test
@@ -122,6 +118,22 @@ public class InventoryServiceTest {
 		when(inventoryRepository.save(Mockito.any())).thenReturn(inventory);
 		
 		Assert.assertNotNull(inventoryService.updateInventory(inventoryDto));
+	}
+	
+	@Test
+	public void getAllInventoryByProduct() throws Exception {
+		List<Inventory> inventoryList = getInventoryList();
+		
+		when(inventoryRepository.getAllInventoryByProductId(Mockito.anyInt())).thenReturn(inventoryList);
+		Assert.assertNotNull(inventoryService.getAllInventoryByProduct(1));
+	}
+	
+	@Test
+	public void getAllInventoryByWarehouseProduct() throws Exception {
+		List<Inventory> inventoryList = getInventoryList();
+		
+		when(inventoryRepository.getAllInventoryByProductIdAndWarehouseId(Mockito.anyInt(), Mockito.anyInt())).thenReturn(inventoryList);
+		Assert.assertNotNull(inventoryService.getAllInventoryByWarehouseProduct(1,1));
 	}
 	
 	public Inventory getInventory()
